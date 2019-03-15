@@ -1,16 +1,20 @@
 buildscript {
     repositories {
+        jcenter()
         mavenCentral()
         google()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:3.2.1'
+        classpath 'com.android.tools.build:gradle:3.3.2'
     }
 }
 
 allprojects {
     repositories {
+        jcenter()
+        google()
         mavenCentral()
-        google()//新增的
+        maven { url 'https://jitpack.io' }
+        maven { url "https://maven.google.com" }
     }
 }

@@ -16,11 +16,11 @@ android {
 //    }
 
     buildTypes {
-        release {
-            proguardFile 'proguard-android.txt'
-            minifyEnabled true
-            shrinkResources true
-        }
+//        release {
+//            proguardFile 'proguard-android.txt'
+//            minifyEnabled true
+//            shrinkResources true
+//        }
     }
 }
 
