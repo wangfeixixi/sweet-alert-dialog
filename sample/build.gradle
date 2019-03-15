@@ -11,9 +11,9 @@ android {
         targetSdkVersion 28
     }
 
-//    lintOptions {
-//        abortOnError false
-//    }
+    lintOptions {
+        abortOnError false
+    }
 
     buildTypes {
         release {
