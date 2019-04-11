@@ -5,11 +5,13 @@ import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 
+import cn.pedant.SweetAlert.SuccessTickView;
 import cn.pedant.SweetAlert.SweetAlertDialog;
 
 public class SampleActivity extends Activity implements View.OnClickListener {
 
     private int i = -1;
+    private SuccessTickView mSuccessTick;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -23,6 +25,8 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         findViewById(R.id.warning_cancel_test).setOnClickListener(this);
         findViewById(R.id.custom_img_test).setOnClickListener(this);
         findViewById(R.id.progress_dialog).setOnClickListener(this);
+
+        mSuccessTick = (SuccessTickView) findViewById(cn.pedant.SweetAlert.R.id.success_tick);
     }
 
     @Override
@@ -30,10 +34,19 @@ public class SampleActivity extends Activity implements View.OnClickListener {
         switch (v.getId()) {
             case R.id.basic_test:
                 // default title "Here's a message!"
-                SweetAlertDialog sd = new SweetAlertDialog(this);
-                sd.setCancelable(true);
-                sd.setCanceledOnTouchOutside(true);
-                sd.show();
+//                SweetAlertDialog sd = new SweetAlertDialog(this);
+//                sd.setCancelable(true);
+//                sd.setCanceledOnTouchOutside(true);
+//                sd.show();
+
+
+//                SweetAlertBottomDialog sd = new SweetAlertBottomDialog(this);
+//                sd.setCancelable(true);
+//                sd.setCanceledOnTouchOutside(true);
+//                sd.show();
+                mSuccessTick.startTickAnim();
+//                mSuccessRightMask.startAnimation(mSuccessBowAnim);
+
                 break;
             case R.id.under_text_test:
                 new SweetAlertDialog(this)
@@ -58,15 +71,15 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                         .setContentText("Won't be able to recover this file!")
                         .setConfirmText("Yes,delete it!")
                         .setConfirmClickListener(new SweetAlertDialog.OnSweetClickListener() {
-                        @Override
-                        public void onClick(SweetAlertDialog sDialog) {
-                            // reuse previous dialog instance
-                            sDialog.setTitleText("Deleted!")
-                                    .setContentText("Your imaginary file has been deleted!")
-                                    .setConfirmText("OK")
-                                    .setConfirmClickListener(null)
-                                    .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
-                        }
+                            @Override
+                            public void onClick(SweetAlertDialog sDialog) {
+                                // reuse previous dialog instance
+                                sDialog.setTitleText("Deleted!")
+                                        .setContentText("Your imaginary file has been deleted!")
+                                        .setConfirmText("OK")
+                                        .setConfirmClickListener(null)
+                                        .changeAlertType(SweetAlertDialog.SUCCESS_TYPE);
+                            }
                         })
                         .show();
                 break;
@@ -128,7 +141,7 @@ public class SampleActivity extends Activity implements View.OnClickListener {
                     public void onTick(long millisUntilFinished) {
                         // you can change the progress bar color by ProgressHelper every 800 millis
                         i++;
-                        switch (i){
+                        switch (i) {
                             case 0:
                                 pDialog.getProgressHelper().setBarColor(getResources().getColor(R.color.blue_btn_bg_color));
                                 break;
